@@ -25,3 +25,12 @@ join inventory as i using(inventory_id)
 group by customer_id
 order by No_of_movies desc
 limit 1;
+
+
+/*Bonus: Which is the most rented film? The answer is Bucket Brotherhood This query might require using more than one join statement. Give it a try. */
+select film_id, title, count(rental_id) as No_of_Renting from inventory as i
+join rental as r using(inventory_id)
+join film as f using(film_id)
+group by film_id
+order by No_of_Renting desc
+limit 1;
